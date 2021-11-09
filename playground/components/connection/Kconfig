@@ -1,0 +1,10 @@
+# Kconfig exemplo
+menu "Configurações do projeto teste"
+
+    config GPIO_LED_2
+        int "GPIO do led 2"
+        default 10
+        range 1 10
+        help
+            Essa opção possibilita a configuração do pino
+endmenu
