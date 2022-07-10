@@ -87,6 +87,7 @@ esp_err_t connect(){
     xEventGroupWaitBits(s_connect_event_group, IPV4_BIT, true, true, portMAX_DELAY);
     ESP_LOGI(TAG, "Connected to %s", s_connection_name);
     ESP_LOGI(TAG, "IPv4 address: " IPSTR, IP2STR(&s_ip_addr));
+    
     return ESP_OK;
 }
 
@@ -96,9 +97,10 @@ esp_err_t disconnect(){
     }
     vEventGroupDelete(s_connect_event_group);
     s_connect_event_group = NULL;
-    stop();
     ESP_LOGI(TAG, "Disconnected from %s", s_connection_name);
-    s_connection_name[0] = '\0';
+    
+    stop();
+    
     return ESP_OK;
 }
 
